@@ -1,9 +1,8 @@
 import express from "express";
 import { userRouter } from "./routes/user.routes";
+import { config } from "./config";
 
 const app = express();
-
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json({limit: "123kb"}));
 
@@ -13,7 +12,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", express.json({limit: "11kb"}), userRouter);
 
-
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-})
+app.listen(config.PORT, () => {
+    console.log(`Server running in *${config.NODE_ENV}* mode on ${config.HOST}:${config.PORT}`);
+});
