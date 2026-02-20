@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from "../controllers/user.controller";
+import { getAllUsers, getUserById, blockUserById } from "../controllers/user.controller";
+import { authenticate, authorize } from "../middleware/auth.middleware";
 
 export const userRouter = Router();
 
-userRouter.get("/", getAllUsers);
-userRouter.get("/:id", getUserById);
-userRouter.post("/:id", createUser);
-userRouter.put("/:id", updateUser);
-userRouter.delete("/:id", deleteUser);
+// admins only
+userRouter.get("/", authenticate, authorize(["admin"]), getAllUsers);
+
+// admins or self
+userRouter.get("/:id", authenticate, getUserById);
+userRouter.patch("/:id/block", authenticate, blockUserById);
