@@ -35,16 +35,23 @@ use `.env.example` to set environment variables
 `npm run build` and `npm run start`
 
 
-## Endpoints:
+***Default Admin is added during initialization:***
+```json
+{
+    "email": "admin@example.com",
+    "password": "password123"
+}
+```
 
+### Endpoints:
 
 
 **POST /auth/register**
 ```json
 {
-  "fullname": "Admin",
+  "fullname": "User",
   "birthdate": "1991-01-01",
-  "email": "admin@example.com",
+  "email": "user@example.com",
   "password": "password123"
 }
 ```
@@ -52,7 +59,7 @@ use `.env.example` to set environment variables
 **POST /auth/login**
 ```json
 {
-  "email": "admin@example.com",
+  "email": "user@example.com",
   "password": "password123"
 }
 ```
