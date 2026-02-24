@@ -18,7 +18,7 @@ const initializeDB = async (filename) => {
         }
 
         // admin creds
-        const adminEmail = "admin@domain.com";
+        const adminEmail = "admin@example.com";
         const adminPassword = "password123";
         const hashedPassword = await bcrypt.hash(adminPassword, parseInt(process.env.SALT_ROUNDS));
         
