@@ -82,10 +82,10 @@ list users:
 
 **GET /api/users**
 
-get user details:
+get user by id:
 
 **GET /api/users/:id**
 
-deactivate the user:
+deactivate user by id:
 
 **PATCH /api/users/:id/block**
