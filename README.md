@@ -34,7 +34,7 @@ use `.env.example` to set environment variables
 
 `npm run build` and `npm run start`
 
-
+---
 ***Default Admin is added during initialization:***
 ```json
 {
@@ -42,11 +42,13 @@ use `.env.example` to set environment variables
     "password": "password123"
 }
 ```
+---
 
 ### Endpoints:
 
 
-**POST /auth/register**
+**POST /auth/register**\
+get initial `accessToken` and `refreshToken`
 ```json
 {
   "fullname": "User",
@@ -56,7 +58,8 @@ use `.env.example` to set environment variables
 }
 ```
 
-**POST /auth/login**
+**POST /auth/login**\
+get `accessToken` and `refreshToken`
 ```json
 {
   "email": "user@example.com",
@@ -64,28 +67,28 @@ use `.env.example` to set environment variables
 }
 ```
 
-get the `accessToken` and `refreshToken`
 
-
-**POST /auth/refresh**
-
+**POST /auth/refresh**\
 get new `accessToken` and `refreshToken`
 
+**POST /auth/logout**\
+sign out
 
-Use Bearer token auth:
+---
 
+Use Bearer token auth:\
 `Bearer <access_token>`
 
 ### User routes:
 
-list users:
+**GET /api/users**\
+list users.\
+for admins only
 
-**GET /api/users**
+**GET /api/users/:id**\
+get user by id.\
+for admins and users (self)
 
-get user by id:
-
-**GET /api/users/:id**
-
-deactivate user by id:
-
-**PATCH /api/users/:id/block**
+**PATCH /api/users/:id/block**\
+deactivate user by id.\
+for admins and users (self)
